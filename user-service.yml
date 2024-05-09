@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  user-service-app
+  namespace: default
+  labels:
+    app:  user-service-app
+spec:
+  selector:
+    matchLabels:
+      app: user-service-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  user-service-app
+    spec:
+      containers:
+      - name:  user-service-app
+        image:  ajithkrkd/planb-user-service:0.0.1
+        imagePullPolicy: Always 
+        resources:
+          requests:
+            cpu: 100m
+            memory: 251Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        env:
+          - name: EUREKA.CLIENT.SERVICEURL.DEFAULTZONE
+            value: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
+          - name: MANAGEMENT.ZIPKIN.TRACING.ENDPOINT
+            value: http://zipkin:9411/
+          - name: SPRING_DATASOURCE_USERNAME  
+          - name: SPRING_DATASOURCE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: user-service-config
+                key: spring_datasource_url
+          - name: SPRING_DATASOURCE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: database-secrets
+                key: spring_datasource_username
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: database-secrets
+                key: spring_datasource_password
+        ports:
+        - containerPort: 8081
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service-svc
+spec:
+  selector:
+    app: user-service-app
+  type: ClusterIP
+  ports:
+    - port:  80
+      targetPort: 8081
+  
+
+        

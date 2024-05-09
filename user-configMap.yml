@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-service-config
+  labels:
+    app: user-service-app
+data:
+  spring_datasource_url: jdbc:mysql://34.93.146.191/plan_b_user
