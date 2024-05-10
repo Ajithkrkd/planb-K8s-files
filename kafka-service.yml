@@ -65,7 +65,8 @@ spec:
       volumes:
         - name: kafka-data  
           persistentVolumeClaim:
-            claimName: kafka-pvc  
+            claimName: kafka-pvc
+          
 ---
 
 apiVersion: v1
