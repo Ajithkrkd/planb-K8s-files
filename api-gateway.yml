@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name:  api-gateway-app
-        image:  ajithkrkd/planb-project-service:0.0.1
+        image:  ajithkrkd/planb-api-gateway:0.0.1
         imagePullPolicy: Always 
         resources:
           requests:
@@ -38,14 +38,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: api-gatway-service-svc
+  name: api-gateway-service-svc
 spec:
   selector:
     app: api-gateway-app
   type: LoadBalancer
   ports:
-  - port: 80  # External port
-    targetPort: 8080  # Port on which pods listen
+  - port: 80  
+    targetPort: 8080  
     protocol: TCP
   
 

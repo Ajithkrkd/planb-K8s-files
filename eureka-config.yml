@@ -64,5 +64,5 @@ spec:
   ports:
    - port:  80
      targetPort: 8761
-     nodePort: 30001
+     nodePort: 30021
 

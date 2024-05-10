@@ -31,8 +31,8 @@ spec:
             value: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
           - name: MANAGEMENT.ZIPKIN.TRACING.ENDPOINT
             value: http://zipkin:9411/
-          - name:  SPRING.ACTIVE.PROFILE
-            value: docker
+          - name: SPRING.KAFKA.BOOTSTRAP-SERVERS
+            value: broker:29092
         ports:
         - containerPort: 8083
 

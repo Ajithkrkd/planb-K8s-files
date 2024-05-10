@@ -27,6 +27,8 @@ spec:
             cpu: 500m
             memory: 512Mi
         env:
+          - name: SPRING.KAFKA.BOOTSTRAP-SERVERS
+            value: broker:29092
           - name: EUREKA.CLIENT.SERVICEURL.DEFAULTZONE
             value: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
           - name: MANAGEMENT.ZIPKIN.TRACING.ENDPOINT
