@@ -32,8 +32,7 @@ spec:
           - name: EUREKA.CLIENT.SERVICEURL.DEFAULTZONE
             value: http://eureka-0.eureka.default.svc.cluster.local:8761/eureka
           - name: MANAGEMENT.ZIPKIN.TRACING.ENDPOINT
-            value: http://zipkin:9411/
-          - name: SPRING_DATASOURCE_USERNAME  
+            value: http://zipkin:9411/          
           - name: SPRING_DATASOURCE_URL
             value: jdbc:mysql://34.93.146.191/plan_b_project
           - name: SPRING_DATASOURCE_USERNAME
