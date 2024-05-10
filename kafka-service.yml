@@ -41,7 +41,10 @@ spec:
     spec:
       containers:
       - name: broker
-        image: confluentinc/cp-kafka:7.0.1  # Replace with desired version if needed
+        image: confluentinc/cp-kafka:7.0.1 
+        securityContext:
+          runAsUser: 0
+          runAsGroup: 0        
         ports:
         - containerPort: 29092
         env:
